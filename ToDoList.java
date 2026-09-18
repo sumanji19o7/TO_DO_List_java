@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ToDoList {
 
-    // Record data structure corresponding to Python's [sno, time, day, month, year, completed, task]
+
     static class TaskRecord implements Serializable {
         private static final long serialVersionUID = 1L;
         int sno;
@@ -28,13 +28,13 @@ public class ToDoList {
     private static final String FILE_NAME = "todo.dat";
     private static final Scanner scanner = new Scanner(System.in);
 
-    // Helper input function equivalent to Python's input()
+
     private static String input(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
     }
 
-    // Helper to sleep equivalent to Python's time.sleep()
+
     private static void sleep(double seconds) {
         try {
             Thread.sleep((long) (seconds * 1000));
@@ -43,7 +43,7 @@ public class ToDoList {
         }
     }
 
-    // Helper to read all records from todo.dat
+    //  to read all records from todo.dat
     @SuppressWarnings("unchecked")
     private static List<TaskRecord> readRecords() {
         List<TaskRecord> records = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ToDoList {
         return records;
     }
 
-    // Helper to write all records to todo.dat
+
     private static void writeRecords(List<TaskRecord> records) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             for (TaskRecord s : records) {
@@ -79,7 +79,7 @@ public class ToDoList {
         }
     }
 
-    // Helper to format and display table equivalent to Python tabulate fancy_grid
+
     private static void printFancyTable(List<TaskRecord> records, String[] headers) {
         int[] colWidths = new int[headers.length];
         for (int i = 0; i < headers.length; i++) {
@@ -96,12 +96,12 @@ public class ToDoList {
             colWidths[6] = Math.max(colWidths[6], r.task != null ? r.task.length() : 0);
         }
 
-        // Add 2 spaces padding
+
         for (int i = 0; i < colWidths.length; i++) {
             colWidths[i] += 2;
         }
 
-        // Top border: ╒═══╤═══╕
+
         System.out.print("╒");
         for (int i = 0; i < colWidths.length; i++) {
             System.out.print("═".repeat(colWidths[i]));
@@ -116,7 +116,7 @@ public class ToDoList {
         }
         System.out.println();
 
-        // Header separator: ╞═══╪═══╡
+
         System.out.print("╞");
         for (int i = 0; i < colWidths.length; i++) {
             System.out.print("═".repeat(colWidths[i]));
